@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://anr-compass.github.io/compass-new/sitemap.xml
