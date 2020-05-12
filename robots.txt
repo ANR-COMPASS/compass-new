@@ -1,1 +1,1 @@
-Sitemap: /compass-new/sitemap.xml
+Sitemap: /sitemap.xml
