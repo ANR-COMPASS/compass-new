@@ -610,7 +610,9 @@ Finally, we need to avoid as much as possible the overlap of diffractions effect
 
 <p>Turbulence is generated on-the-fly during the iterations of the simulation by <a href="https://www.osapublishing.org/oe/abstract.cfm?id=87803">the extrusion of Kolmogorov or Von Karman type phase screens</a>. It is possible to simulate several independent turbulent layers at any set of user-defined altitudes. Each layer has its own arbitrary Fried parameter r0, outer scale values L0, wind speed and direction. The assumption is that the overall turbulence will result from the addition of the phase of these discrete, statistically independent layers, through an appropriate ray-tracing algorithm through each of them taking into account the direction of observation of each WFS and target object. Those phase screens are expressed in terms of optical path difference, in microns.</p>
 
-<h3 id="5-shack-hartmann-wfs">5. Shack-Hartmann WFS</h3>
+<h3 id="5-wave-front-sensor">5. Wave-front sensor</h3>
+
+<h4 id="shack-hartmann-wfs">Shack-Hartmann WFS</h4>
 
 <p><span class="inner"><img src="assets/images/SH-proc.png" alt="SH-proc" width="500px" /></span></p>
 
@@ -645,7 +647,7 @@ This model is called “diffractive”, as it results from a computation of Frau
 
 <p>Note that there isn’t tip-tilt indetermination for LGS in COMPASS.</p>
 
-<h3 id="6-pyramid-wfs">6. Pyramid WFS</h3>
+<h4 id="pyramid-wfs">Pyramid WFS</h4>
 
 <p><span class="inner"><img src="assets/images/pyr-func.png" alt="pyr-func" width="300px" /></span></p>
 
@@ -678,13 +680,13 @@ Add noise
 
 <p>With COMPASS 3.0, it is now possible to run simulate N faces pyramid. Set in the parameter file <code class="highlighter-rouge">p_wfss[0].set_nPupils(3)</code> to use a 3-faces pyramid for example. Note that if N is not equal to 4, the only centroider available is <a href="#masked-pixels">“maskedpix”</a>.</p>
 
-<h3 id="geometric-wfs">“Geometric” WFS</h3>
+<h4 id="geometric-wfs">“Geometric” WFS</h4>
 
 <p>COMPASS also features a so-called “geometric model” emulating an ideal Shack-Hartmann wavefront sensor. This algorithm directly computes the average phase gradient at each subaperture, based on the phase itself, with no noise. This estimation of the average slope of the wavefront is considered as an “ideal” measurement, with perfect linearity over an infinite range and that does not suffer from any kind of sampling effect by a detector. This geometric model is embedded in all the WFS in COMPASS. Use the command <code class="highlighter-rouge">sim.rtc.do_centroids_geom(0)</code> to compute it.</p>
 
 <p>Finally, a last level of abstraction is reached with the third type of wave surface analyzer, which is purely theoretical: it is a direct projection of the phase onto the DM influence functions, resulting in a set of DM voltages that best fit the wavefront in a least-square sense. It is fully linear and is free from any WFS effect or reconstruction effect, it is in particular free from aliasing. We call this method “DM projection”, it behaves as a theoretical, perfect WFS. To use it, set your controller type to “geo” : <code class="highlighter-rouge">p_controllers[0].type = "geo"</code></p>
 
-<h3 id="7-deformable-mirrors">7. Deformable mirrors</h3>
+<h3 id="6-deformable-mirrors">6. Deformable mirrors</h3>
 
 <p>COMPASS models the DM as a weighted sum of local influence functions. Several types of built-in influence functions are available, all of them close to a bell-shaped function. They have different analytical expressions, that fit different types of DMs. Each influence function is defined on a local support, chosen to be small with respect to the simulated pupil.</p>
 
@@ -782,7 +784,7 @@ The simulation will then automatically resize and interpolate properly your infl
 The names given here are arbitrary : you have to provide the actual names of those fields in the parameter file.
 -->
 
-<h3 id="8-centroiders">8. Centroiders</h3>
+<h3 id="7-centroiders">7. Centroiders</h3>
 
 <h4 id="schack-hartmann-wfs-centroides">Schack-Hartmann WFS centroides</h4>
 
@@ -845,7 +847,7 @@ The names given here are arbitrary : you have to provide the actual names of tho
 
 <p>This centroider has to be used for pyramid WFS with more or less than 4 faces. It basically returns all the valid pixels of the WFS images. Then, the commands are computed directly on the pixels intensities.</p>
 
-<h3 id="9-controllers">9. Controllers</h3>
+<h3 id="8-controllers">8. Controllers</h3>
 
 <h4 id="least-square-approach">Least-square approach</h4>
 
@@ -922,7 +924,7 @@ Use the command <code class="highlighter-rouge">sim.rtc.set_commandlaw(0,b"2matr
   <li>(a = 0 ; b = 1-e ; e= floor(d) - 1) if 1 &lt; d &lt;= 2</li>
 </ul>
 
-<h3 id="10-image-formation">10. Image formation</h3>
+<h3 id="9-image-formation">9. Image formation</h3>
 
 <p><span class="inner"><img src="assets/images/PSF-spiders.png" alt="PSF-spiders" width="300px" /></span></p>
 
