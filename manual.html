@@ -514,7 +514,7 @@ To write your own parameter file, remember those important points :</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ipython -i $SHESHA_ROOT/widgets/widget_ao.py
 </code></pre></div></div>
 
-<p><img src="https://anr-compass.github.io/compass/images/compass_gui_annotated.png" alt="gui" width="600px" /></p>
+<p><img src="assets/images/compass_gui_annotated.png" alt="gui" width="600px" /></p>
 
 <p>To start your simulation, follows those steps:</p>
 
@@ -527,7 +527,7 @@ To write your own parameter file, remember those important points :</p>
 
 <h4 id="display-management">Display management</h4>
 
-<p><img src="https://anr-compass.github.io/compass/images/gui_display.png" alt="display" width="600px" /></p>
+<p><img src="assets/images/gui_display.png" alt="display" width="600px" /></p>
 
 <p>By default, nothing is displayed when you launched the simulation. You can choose what to display by cheking the corresponding boxes in the drop down menus. Then, you can rearrange the displays as you wish by drag and drop. You can also detach the display area from the main window by clicking the button in the bottom right corner of the main window.</p>
 
@@ -602,7 +602,7 @@ Finally, we need to avoid as much as possible the overlap of diffractions effect
 
 <h3 id="3-telescope">3. Telescope</h3>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/ELT-ab.png" alt="ELTab" height="300px" /></span></p>
+<p><span class="inner"><img src="assets/images/ELT-ab.png" alt="ELTab" height="300px" /></span></p>
 
 <p>COMPASS includes the ability to use customizable telescope pupil: the diameter and the eventual central obstruction are parameters of the simulation. ELT and VLT pupils have been also implemented, including spiders, hexagonal segments, and missing segments. Phase aberration due to misalignment of the pupil segments are also configurable by specifying the amount of piston and tip-tilt errors. Reflectivity error between each segment can also be taken into account.</p>
 
@@ -612,7 +612,7 @@ Finally, we need to avoid as much as possible the overlap of diffractions effect
 
 <h3 id="5-shack-hartmann-wfs">5. Shack-Hartmann WFS</h3>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/SH-proc.png" alt="SH-proc" width="500px" /></span></p>
+<p><span class="inner"><img src="assets/images/SH-proc.png" alt="SH-proc" width="500px" /></span></p>
 
 <p>COMPASS includes a Shack-Hartmann wave-front sensor model based on Fast Fourier Transforms (FFT) of the portion of the complex amplitude of the wave-front seen by each subaperture. This wave-front is computed by raytracing the turbulent layer and/or the DM shape in the guide star (GS) direction. The number of subapertures, the number of pixels per subaperture and the pixel size are specified by the user.</p>
 
@@ -637,7 +637,7 @@ This model is called “diffractive”, as it results from a computation of Frau
 
 <h4 id="laser-guide-stars">Laser guide stars</h4>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/LGS-proc.png" alt="LGS-spot" width="500px" /></span></p>
+<p><span class="inner"><img src="assets/images/LGS-proc.png" alt="LGS-spot" width="500px" /></span></p>
 
 <p>Laser Guide Stars can be included in the simulation. It takes into account the sodium profile to compute elongation on each sub-aperture, and also the cone effect.  Elongation is computed by convolving the high resolution image on each subaperture by a high resolution elongated spot model. This spot model is computed in respect with the sodium profile that could be analytical (Gaussian) or experimental (read from a file), and with each sub-apertures positions in relation to the laser launch position.</p>
 
@@ -647,7 +647,7 @@ This model is called “diffractive”, as it results from a computation of Frau
 
 <h3 id="6-pyramid-wfs">6. Pyramid WFS</h3>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/pyr-func.png" alt="pyr-func" width="300px" /></span></p>
+<p><span class="inner"><img src="assets/images/pyr-func.png" alt="pyr-func" width="300px" /></span></p>
 
 <p>COMPASS features a pyramid wavefront sensor model based on the concept described in <a href="http://www.tandfonline.com/doi/abs/10.1080/09500349608232742">Ragazzoni 1996</a>. The PSF on the tip of the pyramid is obtained as the square modulus of the EM field in the pyramid plane. The latter is computed at high resolution as the Fourier transform of the EM field in the pupil plane for which the amplitude is given by the pupil intensity distribution and the phase is obtained as a combination of the actual residual phase from atmospheric disturbance (evaluated by raytracing through the turbulence and compensation from the DM) and the phase introduced by modulation.
 The phase term introduced by the pyramid itself is added to this EM field and another Fourier Transform accounting for the relay lens, provides the EM field on the plane of the camera.</p>
@@ -656,7 +656,7 @@ The phase term introduced by the pyramid itself is added to this EM field and an
 
 <p>Proper undersampling to the users parameters and flux normalization are then performed. Photon and detector noise can then be added if specified.</p>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/pyrimg.png" alt="pyrimg" width="400px" /><img src="https://anr-compass.github.io/compass/images/High-res-pyr.png" alt="pyrhr" width="400px" /></span></p>
+<p><span class="inner"><img src="assets/images/pyrimg.png" alt="pyrimg" width="400px" /><img src="assets/images/High-res-pyr.png" alt="pyrhr" width="400px" /></span></p>
 
 <p>Here a pseudo-code of the algorithm :</p>
 
@@ -698,7 +698,8 @@ Add noise
 
 <h4 id="custom-dm">Custom DM</h4>
 
-<p>It is also possible to use your own influence function. To do so, you have to provide a HDF5 file where you have saved your influence function and other informations on your DM in a <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">pandas DataFrame</a> named <code class="highlighter-rouge">"resAll"</code>. The simulation will then automatically resize and interpolate properly your influence functions. The needed informations in the dataFrame are listed below:</p>
+<p>It is also possible to use your own influence function. To do so, you have to provide a FITS file where you have saved your influence function and other informations on your DM 
+The simulation will then automatically resize and interpolate properly your influence functions. The needed informations in the dataFrame are listed below:</p>
 
 <table>
   <thead>
@@ -711,51 +712,75 @@ Add noise
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">xpos</td>
-      <td style="text-align: left">np.array(ndim=1, dtype=np.float32)</td>
-      <td style="text-align: left">meters</td>
-      <td style="text-align: left">X positions of the actuators</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">ypos</td>
-      <td style="text-align: left">np.array(ndim=1, dtype=np.float32)</td>
-      <td style="text-align: left">meters</td>
-      <td style="text-align: left">Y positions of the actuators</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">center</td>
-      <td style="text-align: left">np.array(ndim=1, dtype=np.float32)</td>
-      <td style="text-align: left">meters</td>
-      <td style="text-align: left">2-elements vector defining the origin of xpos and ypos in relation to the physical center of the DM</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">res</td>
+      <td style="text-align: left">xC</td>
       <td style="text-align: left">float</td>
-      <td style="text-align: left">m/pix</td>
-      <td style="text-align: left">Pixel resolution of your influence function</td>
+      <td style="text-align: left">pixels</td>
+      <td style="text-align: left">DM center along X</td>
     </tr>
     <tr>
-      <td style="text-align: left">dm_diam</td>
+      <td style="text-align: left">yC</td>
+      <td style="text-align: left">float</td>
+      <td style="text-align: left">pixels</td>
+      <td style="text-align: left">DM center along Y</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pitchPix</td>
+      <td style="text-align: left">float</td>
+      <td style="text-align: left">pixels</td>
+      <td style="text-align: left">actuators pitch, not required</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pitchMeters</td>
       <td style="text-align: left">float</td>
       <td style="text-align: left">meters</td>
-      <td style="text-align: left">DM diameter</td>
+      <td style="text-align: left">actuators pitch</td>
     </tr>
     <tr>
-      <td style="text-align: left">dm_diam_pup</td>
-      <td style="text-align: left">float</td>
-      <td style="text-align: left">meters</td>
-      <td style="text-align: left">DM diameter projected in the pupil plane</td>
+      <td style="text-align: left">hi_i1, hi_j1</td>
+      <td style="text-align: left">np.array(ndim=2)</td>
+      <td style="text-align: left">pixels</td>
+      <td style="text-align: left">Coordinates of the influence function maps</td>
     </tr>
     <tr>
       <td style="text-align: left">influ</td>
       <td style="text-align: left">np.array(ndim=3,dtype=np.float32)</td>
-      <td style="text-align: left">Normalized deformation</td>
-      <td style="text-align: left">Cube containing your influence functions. Cube size is (influ_size x influ_size x nactus). Influence functions must be ordered as the xpos and ypos vectors, and mormalized to 1.</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">Cube containing your influence functions. Cube size is (influ_size x influ_size x nactus). Influence functions must be ordered as the xpos and ypos vectors</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">xpos, ypos</td>
+      <td style="text-align: left">np.array(ndim=2, dtype=np.float32)</td>
+      <td style="text-align: left">pixels</td>
+      <td style="text-align: left">actuators coordinates</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pixsize</td>
+      <td style="text-align: left">float</td>
+      <td style="text-align: left">meters</td>
+      <td style="text-align: left">The size of the pixel in the fits support</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">pupm</td>
+      <td style="text-align: left">float</td>
+      <td style="text-align: left">meters</td>
+      <td style="text-align: left">Size of the DM pupil</td>
     </tr>
   </tbody>
 </table>
 
-<p>The names given here are arbitrary : you have to provide the actual names of those fields in the parameter file.</p>
+<!--
+| Name        | Type                               | Unit                   | Description                                                                                                                                                                       |
+| :---------- | :--------------------------------- | :--------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| xpos        | np.array(ndim=1, dtype=np.float32) | meters                 | X positions of the actuators                                                                                                                                                      |
+| ypos        | np.array(ndim=1, dtype=np.float32) | meters                 | Y positions of the actuators                                                                                                                                                      |
+| center      | np.array(ndim=1, dtype=np.float32) | meters                 | 2-elements vector defining the origin of xpos and ypos in relation to the physical center of the DM                                                                               |
+| res         | float                              | m/pix                  | Pixel resolution of your influence function                                                                                                                                       |
+| dm_diam     | float                              | meters                 | DM diameter                                                                                                                                                                       |
+| dm_diam_pup | float                              | meters                 | DM diameter projected in the pupil plane                                                                                                                                          |
+| influ       | np.array(ndim=3,dtype=np.float32)  | Normalized deformation | Cube containing your influence functions. Cube size is (influ_size x influ_size x nactus). Influence functions must be ordered as the xpos and ypos vectors, and mormalized to 1. |
+
+The names given here are arbitrary : you have to provide the actual names of those fields in the parameter file.
+-->
 
 <h3 id="8-centroiders">8. Centroiders</h3>
 
@@ -899,7 +924,7 @@ Use the command <code class="highlighter-rouge">sim.rtc.set_commandlaw(0,b"2matr
 
 <h3 id="10-image-formation">10. Image formation</h3>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/PSF-spiders.png" alt="PSF-spiders" width="300px" /></span></p>
+<p><span class="inner"><img src="assets/images/PSF-spiders.png" alt="PSF-spiders" width="300px" /></span></p>
 
 <p>The output of a classical COMPASS simulation is the PSF of the simulated system. It is computed as the Fourier transform of the complex field amplitude obtained after a ray-tracing through the turbulent layer screens and the DM shape screen. The wavelength of this PSF is a user parameter; the phase is scaled accordingly. The size of the support for achieving the FFT is chosen among the integer powers of 2 immediately greater than twice the pupil size, in order to provide the user with an adequate sampling of the PSF (in general slightly finer than Nyquist).
 The PSF intensity is normalized in such a way that its maximum value corresponds to the Strehl ratio. Each loop iteration produces a short-exposure PSF, which is averaged over the iterations to produce the long-exposure PSF. As it results from a Monte-Carlo simulation, the PSF includes the statistical non convergence limitation.</p>
@@ -910,7 +935,7 @@ The PSF intensity is normalized in such a way that its maximum value corresponds
 
 <h3 id="1-compass-architecture">1. COMPASS architecture</h3>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/compass_archi.png" alt="archi" height="280px" />&gt;</span></p>
+<p><span class="inner"><img src="assets/images/compass_archi.png" alt="archi" height="280px" />&gt;</span></p>
 
 <p>The initial objective behind the development of COMPASS was to get a numerical simulation platform able to deliver short exposure PSF (i.e. per WFS frame) with a time-to-solution in the range of the 10th of seconds for an AO system at the E-ELT scale. To reach such performance, the use of GPU as hardware accelerators appeared as the best option.</p>
 
@@ -1045,7 +1070,7 @@ However, unless you are a developer for COMPASS, it is generally useless to get 
 </code></pre></div></div>
 
 <p>The initialization process is described below.
-<img src="https://anr-compass.github.io/compass/images/init-process.png" alt="init" width="840px" />
+<img src="assets/images/init-process.png" alt="init" width="840px" />
 Each step of this initialization process depends on the parameters file. For example, if no DM parameters are defined in the parameter file, then no DM will be initialized and the simulation will run without any DM.</p>
 
 <p>After this initialization phase, you can run the AO loop with function <code class="highlighter-rouge">loop</code> that takes the number of iterations as argument:</p>
@@ -1053,7 +1078,7 @@ Each step of this initialization process depends on the parameters file. For exa
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sim</span><span class="p">.</span><span class="n">loop</span><span class="p">(</span><span class="n">sim</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">p_loop</span><span class="p">.</span><span class="n">niter</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/loop-process.png" alt="loop" width="480px" /></span></p>
+<p><span class="inner"><img src="assets/images/loop-process.png" alt="loop" width="480px" /></span></p>
 
 <p>Note that <code class="highlighter-rouge">sim.config.p_loop.niter</code> is used to retieve the number of iterations specified in the parameter file : you can replace it by any integer.</p>
 
@@ -1818,6 +1843,14 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
       <td style="text-align: left">Pyramid pupils separation</td>
     </tr>
     <tr>
+      <td style="text-align: left"><strong>pyr_compute_focalplane</strong></td>
+      <td style="text-align: left">bool</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">yes</td>
+      <td style="text-align: left">False</td>
+      <td style="text-align: left">Compute modulated PSF</td>
+    </tr>
+    <tr>
       <td style="text-align: left"><em>_pdiam</em></td>
       <td style="text-align: left">int</td>
       <td style="text-align: left">pixels</td>
@@ -2136,7 +2169,7 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
       <td style="text-align: left">none</td>
       <td style="text-align: left">yes</td>
       <td style="text-align: left">“default”</td>
-      <td style="text-align: left">Influence function to use: “default”, “radialSchwartz”, “squareSchwartz”, “blacknutt”, “gaussian” or “bessel”</td>
+      <td style="text-align: left">Influence function to use: “default”, “radialSchwartz”, “squareSchwartz”, “blacknutt”, “gaussian”, “bessel” or “petal”</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>file_influ_hdf5</strong></td>
@@ -2144,7 +2177,7 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
       <td style="text-align: left">none</td>
       <td style="text-align: left">yes</td>
       <td style="text-align: left">None</td>
-      <td style="text-align: left">HDF5 file name of custom influence functions. Overwrites influType, type_pattern, nact</td>
+      <td style="text-align: left">FITS file name of custom influence functions. Overwrites influType, type_pattern, nact</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>center_name</strong></td>
@@ -2653,6 +2686,14 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
       <td style="text-align: left">Number of gains to test between gmin and gmax (“ls” only)</td>
     </tr>
     <tr>
+      <td style="text-align: left"><strong>nstates</strong></td>
+      <td style="text-align: left">int</td>
+      <td style="text-align: left">none</td>
+      <td style="text-align: left">yes</td>
+      <td style="text-align: left">0</td>
+      <td style="text-align: left">Number of states in the controller (free variables to store anything)</td>
+    </tr>
+    <tr>
       <td style="text-align: left"><em>_nvalid</em></td>
       <td style="text-align: left">list</td>
       <td style="text-align: left">none</td>
@@ -2767,11 +2808,91 @@ Options:
 <span class="k">done</span>
 </code></pre></div></div>
 
+<h2 id="4-scripting-with-compass-1">4. Scripting with COMPASS</h2>
+
+<p>This section aims to provide some tips for writing your own script. We higly recommend to create your own class that inherits from the Simulator class for obvious convenience reasons. Once you have created your own class, just write a python script that will use it properly, eventually inside a custom Supervisor class for easier usage.</p>
+
+<h3 id="1-inheritance-1">1. Inheritance</h3>
+
+<p>If you don’t know anything about inheritance with python, you can find information in the <a href="https://docs.python.org/3/tutorial/classes.html#inheritance">Python documentation</a>.</p>
+
+<p>We recommend to not overwrite the <code class="highlighter-rouge">init_sim</code>, <code class="highlighter-rouge">load_from_file</code> and <code class="highlighter-rouge">force_context</code> functions in your class, unless you really know what you are doing. The interesting function the overwrite are <code class="highlighter-rouge">next</code> and eventually <code class="highlighter-rouge">loop</code>.</p>
+
+<p>The <code class="highlighter-rouge">next</code> function defines what happen during an iteration. You can basically rewrite this function if you want a specific behaviour for your loop.</p>
+
+<p>The <code class="highlighter-rouge">loop</code> function basically put the <code class="highlighter-rouge">next</code> function in a loop and performs some operations like PSF computation regularly.</p>
+
+<p>By overwriting those two functions in your own class, you can reach any wanted behaviour for your simulation.</p>
+
+<h3 id="2-batch-processing-1">2. Batch processing</h3>
+
+<p>Once you have wrote your script and tested it, you will probably want to perform a batch of simulations for parameters space exploration.</p>
+
+<p>To do so, we highly recommend to write your batch script as a shell script that will call your python script. Indeed, we have noticed some unexpected problems by performing a high number of simulation in an unique python session. A bash script allows then to close the python session at the end of a simulation and to opena new one for the next simulation, ensuring then correct results.</p>
+
+<p>We recommend to use <a href="http://docopt.org/">docopt</a> in your python file to easily parse arguments from the shell in your script. This tip will avoid you to write a parameter file per simulation case. Your python script will also have to include a function that will save the results of each simulations.</p>
+
+<p><strong>Example: performing simulations for various r0</strong></p>
+
+<ul>
+  <li><strong>Step 1</strong>: write your parameter file</li>
+  <li><strong>Step 2</strong>: write your own class that inherits from Simulator to perform whatever you want during the simulation process</li>
+  <li><strong>Step3</strong>: write your script using docopt. Here, we want to get r0 as a command line argument. The script should be like:</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""script for my simulation
+
+Usage:
+  my_script.py &lt;parameters_filename&gt; &lt;save_filename&gt; [options]
+
+with 'parameters_filename' the path to the parameters file
+
+Options:
+  -h --help                   Show this help message and exit
+  --r0 r0                     set the r0
+"""</span>
+
+<span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
+<span class="kn">from</span> <span class="nn">YourFile</span> <span class="kn">import</span> <span class="n">YourClass</span>
+
+<span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="n">param_file</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"&lt;parameters_filename&gt;"</span><span class="p">]</span>
+<span class="n">save_file</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"&lt;save_filemane&gt;"</span><span class="p">]</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">YourClass</span><span class="p">(</span><span class="n">param_file</span><span class="p">)</span> <span class="c1"># Instantiates your class and load parameters
+</span>
+<span class="k">if</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"--r0"</span><span class="p">]:</span> <span class="c1"># Check if r0 has been given as arguments
+</span>    <span class="n">sim</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">p_atmos</span><span class="p">.</span><span class="n">set_r0</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="s">"--r0"</span><span class="p">]))</span> <span class="c1"># Change the r0 before initalization
+</span>
+<span class="n">sim</span><span class="p">.</span><span class="n">init_sim</span><span class="p">()</span>
+<span class="n">sim</span><span class="p">.</span><span class="n">loop</span><span class="p">()</span>
+
+<span class="n">a_save_function</span><span class="p">(</span><span class="n">save_file</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Step 4</strong>: write a shell script</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nv">R0</span><span class="o">=</span><span class="s2">"0.12 0.14 0.16 0.18"</span>
+<span class="nv">script</span><span class="o">=</span><span class="s2">"/path_to_your_script/my_script.py"</span>
+<span class="nv">savepath</span><span class="o">=</span><span class="s2">"/path_where_to_save"</span>
+<span class="nv">OUTPUT</span><span class="o">=</span><span class="s2">"/path/logfile.log"</span>
+
+<span class="k">for </span>r <span class="k">in</span> <span class="nv">$R0</span>
+<span class="k">do
+    </span><span class="nv">CMD</span><span class="o">=</span><span class="s2">"python </span><span class="nv">$script</span><span class="s2"> </span><span class="nv">$savepath</span><span class="s2">/sim_with_r0_"</span><span class="nv">$r</span><span class="s2">".h5 -- --r0 </span><span class="nv">$r</span><span class="s2">"</span>
+    <span class="nb">echo</span> <span class="s2">"execute </span><span class="nv">$CMD</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> <span class="nv">$OUTPUT</span>
+    <span class="nv">$CMD</span> 2&gt;&gt; <span class="nv">$OUTPUT</span> <span class="o">&gt;&gt;</span> <span class="nv">$OUTPUT</span>
+<span class="k">done</span>
+</code></pre></div></div>
+
 <h2 id="5-advanced-features--guardians-package">5. Advanced features : GUARDIANS package</h2>
 
 <h3 id="1-guardians-package-content">1. GUARDIANS package content</h3>
 
-<p><span class="inner"><img src="https://anr-compass.github.io/compass/images/guardians.png" alt="guardians" width="400px" /></span></p>
+<p><span class="inner"><img src="assets/images/guardians.png" alt="guardians" width="400px" /></span></p>
 
 <p>GUARDIANS is a Python package distributed with COMPASS which provides tools dedicated to the numerical estimation and modeling of the AO error breakdown.
 This package contains 3 main modules :</p>
