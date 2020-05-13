@@ -1,2 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://anr-compass.github.io/compass-new/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anr-compass.github.io/compass-new/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-05-13T07:53:43+00:00</updated><id>https://anr-compass.github.io/compass-new/feed.xml</id><title type="html">COMPASS</title><subtitle>End-to-end AO simulation tool using GPU acceleration
-</subtitle><author><name>ANR-COMPASS</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://anr-compass.github.io/compass-new/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anr-compass.github.io/compass-new/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-05-13T08:43:02+00:00</updated><id>https://anr-compass.github.io/compass-new/feed.xml</id><title type="html">COMPASS</title><subtitle>End-to-end AO simulation tool using GPU acceleration
+</subtitle><author><name>ANR-COMPASS</name></author><entry><title type="html">Release of v4.4.1</title><link href="https://anr-compass.github.io/compass-new/2020/03/31/Release-of-v4.4.1.html" rel="alternate" type="text/html" title="Release of v4.4.1" /><published>2020-03-31T00:00:00+00:00</published><updated>2020-03-31T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2020/03/31/Release-of-v4.4.1</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2020/03/31/Release-of-v4.4.1.html">&lt;ul&gt;
+  &lt;li&gt;handle different shape for rawimages and cal images (using the LUTfeature)&lt;/li&gt;
+  &lt;li&gt;possibility to attach a stream tocentroiders&lt;/li&gt;
+  &lt;li&gt;opimization of pyramid HR wfs&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;do_centroids_ref&lt;/code&gt; method&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;init_custom_dm&lt;/code&gt; method&lt;/li&gt;
+  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements*.txt&lt;/code&gt; file toinstall python dependencies&lt;/li&gt;
+  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;Jenkinsfile&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;update Doxyfile script anddocumentation rst&lt;/li&gt;
+  &lt;li&gt;generate gcov trace in debug&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2020," /><category term="v4" /><summary type="html">handle different shape for rawimages and cal images (using the LUTfeature) possibility to attach a stream tocentroiders opimization of pyramid HR wfs debug do_centroids_ref method debug init_custom_dm method add requirements*.txt file toinstall python dependencies add Jenkinsfile update Doxyfile script anddocumentation rst generate gcov trace in debug Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.4.0</title><link href="https://anr-compass.github.io/compass-new/2020/01/15/Release-of-v4.4.0.html" rel="alternate" type="text/html" title="Release of v4.4.0" /><published>2020-01-15T00:00:00+00:00</published><updated>2020-01-15T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2020/01/15/Release-of-v4.4.0</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2020/01/15/Release-of-v4.4.0.html">&lt;ul&gt;
+  &lt;li&gt;Debug issue with Kepler architecture&lt;/li&gt;
+  &lt;li&gt;Multi GPU controller reworked&lt;/li&gt;
+  &lt;li&gt;Update pages-doc&lt;/li&gt;
+  &lt;li&gt;Add useful keyworks in&lt;code class=&quot;highlighter-rouge&quot;&gt;rtc_cacao&lt;/code&gt; loopframe&lt;/li&gt;
+  &lt;li&gt;Add &lt;code class=&quot;highlighter-rouge&quot;&gt;reset_coms&lt;/code&gt; function in&lt;code class=&quot;highlighter-rouge&quot;&gt;sutra_controller&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Update Jenkinsfile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2020," /><category term="v4" /><summary type="html">Debug issue with Kepler architecture Multi GPU controller reworked Update pages-doc Add useful keyworks inrtc_cacao loopframe Add reset_coms function insutra_controller Update Jenkinsfile Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.3.2</title><link href="https://anr-compass.github.io/compass-new/2019/11/27/Release-of-v4.3.2.html" rel="alternate" type="text/html" title="Release of v4.3.2" /><published>2019-11-27T00:00:00+00:00</published><updated>2019-11-27T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/11/27/Release-of-v4.3.2</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/11/27/Release-of-v4.3.2.html">&lt;ul&gt;
+  &lt;li&gt;Support for controller delay &amp;gt; 2.0&lt;/li&gt;
+  &lt;li&gt;Multi-GPU controller&lt;/li&gt;
+  &lt;li&gt;Debug FP16 feature&lt;/li&gt;
+  &lt;li&gt;Debug 2matrices mode of generic controller&lt;/li&gt;
+  &lt;li&gt;Minor debug&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v4" /><summary type="html">Support for controller delay &amp;gt; 2.0 Multi-GPU controller Debug FP16 feature Debug 2matrices mode of generic controller Minor debug Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.3.1</title><link href="https://anr-compass.github.io/compass-new/2019/09/26/Release-of-v4.3.1.html" rel="alternate" type="text/html" title="Release of v4.3.1" /><published>2019-09-26T00:00:00+00:00</published><updated>2019-09-26T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/09/26/Release-of-v4.3.1</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/09/26/Release-of-v4.3.1.html">&lt;ul&gt;
+  &lt;li&gt;Add spider rotation and circular obstruction for ELT-like pupils&lt;/li&gt;
+  &lt;li&gt;New feature : image with the selected pixels of the maskedpix centroider&lt;/li&gt;
+  &lt;li&gt;Debug maskedpix to divide the image by the mean value of the pixels instead of the sum&lt;/li&gt;
+  &lt;li&gt;Fix maskedpix get_type method&lt;/li&gt;
+  &lt;li&gt;Add cone effect for the altitude conjugated DM in case of LGS WFS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v4" /><summary type="html">Add spider rotation and circular obstruction for ELT-like pupils New feature : image with the selected pixels of the maskedpix centroider Debug maskedpix to divide the image by the mean value of the pixels instead of the sum Fix maskedpix get_type method Add cone effect for the altitude conjugated DM in case of LGS WFS Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.3.0</title><link href="https://anr-compass.github.io/compass-new/2019/09/11/Release-of-v4.3.0.html" rel="alternate" type="text/html" title="Release of v4.3.0" /><published>2019-09-11T00:00:00+00:00</published><updated>2019-09-11T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/09/11/Release-of-v4.3.0</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/09/11/Release-of-v4.3.0.html">&lt;ul&gt;
+  &lt;li&gt;change license to GNU LGPL-v3&lt;/li&gt;
+  &lt;li&gt;add Turing support&lt;/li&gt;
+  &lt;li&gt;add DM registration feature&lt;/li&gt;
+  &lt;li&gt;add AoSupervisor class on top of CompassSupervisor and BenchSupervisor&lt;/li&gt;
+  &lt;li&gt;SH WFS can handle big subapertures (before it was limited to 20x20)&lt;/li&gt;
+  &lt;li&gt;add LUTpix in calibration process to reorder pixels&lt;/li&gt;
+  &lt;li&gt;possibility to compute target SR fitted on a0 sinc function&lt;/li&gt;
+  &lt;li&gt;modification of pyramid centroider to use CUB&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v4" /><summary type="html">change license to GNU LGPL-v3 add Turing support add DM registration feature add AoSupervisor class on top of CompassSupervisor and BenchSupervisor SH WFS can handle big subapertures (before it was limited to 20x20) add LUTpix in calibration process to reorder pixels possibility to compute target SR fitted on a0 sinc function modification of pyramid centroider to use CUB Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.2.0</title><link href="https://anr-compass.github.io/compass-new/2019/05/24/Release-of-v4.2.0.html" rel="alternate" type="text/html" title="Release of v4.2.0" /><published>2019-05-24T00:00:00+00:00</published><updated>2019-05-24T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/05/24/Release-of-v4.2.0</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/05/24/Release-of-v4.2.0.html">&lt;ul&gt;
+  &lt;li&gt;add pyramid focal plane visualization&lt;/li&gt;
+  &lt;li&gt;add md report generation in check.py&lt;/li&gt;
+  &lt;li&gt;update documentation generation using doxygen&lt;/li&gt;
+  &lt;li&gt;add natural integration of FP16 and complex in python&lt;/li&gt;
+  &lt;li&gt;add KECK aperture type&lt;/li&gt;
+  &lt;li&gt;better ELT Pupil generation&lt;/li&gt;
+  &lt;li&gt;drop BRAHMA, use CACAO interface instead&lt;/li&gt;
+  &lt;li&gt;computes PSF in every iteration&lt;/li&gt;
+  &lt;li&gt;add frame calibration&lt;/li&gt;
+  &lt;li&gt;remove KALMAN support&lt;/li&gt;
+  &lt;li&gt;add pyramid modulation weight&lt;/li&gt;
+  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;filter_TT&lt;/code&gt; parameter in centroider&lt;/li&gt;
+  &lt;li&gt;add modal integrator control law&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;for Internal developments:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add custom pyr modulation script to handle natural guide dual-stars and resolved NGS&lt;/li&gt;
+  &lt;li&gt;add hunter integration optional&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v4" /><summary type="html">add pyramid focal plane visualization add md report generation in check.py update documentation generation using doxygen add natural integration of FP16 and complex in python add KECK aperture type better ELT Pupil generation drop BRAHMA, use CACAO interface instead computes PSF in every iteration add frame calibration remove KALMAN support add pyramid modulation weight add filter_TT parameter in centroider add modal integrator control law for Internal developments: add custom pyr modulation script to handle natural guide dual-stars and resolved NGS add hunter integration optional Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.1.0</title><link href="https://anr-compass.github.io/compass-new/2019/03/15/Release-of-v4.1.0.html" rel="alternate" type="text/html" title="Release of v4.1.0" /><published>2019-03-15T00:00:00+00:00</published><updated>2019-03-15T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/03/15/Release-of-v4.1.0</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/03/15/Release-of-v4.1.0.html">&lt;ul&gt;
+  &lt;li&gt;Add multiple input/computation/output type for RTC module&lt;/li&gt;
+  &lt;li&gt;uniformize axis in widget display&lt;/li&gt;
+  &lt;li&gt;better ELT Pupil generation&lt;/li&gt;
+  &lt;li&gt;add unit tests of rtc module&lt;/li&gt;
+  &lt;li&gt;add DM petal&lt;/li&gt;
+  &lt;li&gt;add fake camera input&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;load_config_from_file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;wfs_init&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;for Internal developments:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add compile script&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v4" /><summary type="html">Add multiple input/computation/output type for RTC module uniformize axis in widget display better ELT Pupil generation add unit tests of rtc module add DM petal add fake camera input debug load_config_from_file debug wfs_init for Internal developments: add compile script Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.0.1</title><link href="https://anr-compass.github.io/compass-new/2019/02/02/Release-of-v4.0.1.html" rel="alternate" type="text/html" title="Release of v4.0.1" /><published>2019-02-02T00:00:00+00:00</published><updated>2019-02-02T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/02/02/Release-of-v4.0.1</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/02/02/Release-of-v4.0.1.html">&lt;p&gt;minor changes&lt;/p&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v4" /><summary type="html">minor changes Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v4.0</title><link href="https://anr-compass.github.io/compass-new/2019/01/18/Release-of-v4.0.html" rel="alternate" type="text/html" title="Release of v4.0" /><published>2019-01-18T00:00:00+00:00</published><updated>2019-01-18T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/01/18/Release-of-v4.0</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/01/18/Release-of-v4.0.html">&lt;ul&gt;
+  &lt;li&gt;change centroid computation using CUB library&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;for Internal developments:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;rename internal variables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v4" /><summary type="html">change centroid computation using CUB library for Internal developments: rename internal variables Report bugs and issues on this page</summary></entry><entry><title type="html">Release of v3.4</title><link href="https://anr-compass.github.io/compass-new/2019/01/14/Release-of-v3.4.html" rel="alternate" type="text/html" title="Release of v3.4" /><published>2019-01-14T00:00:00+00:00</published><updated>2019-01-14T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2019/01/14/Release-of-v3.4</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2019/01/14/Release-of-v3.4.html">&lt;ul&gt;
+  &lt;li&gt;Naga anf Shesha are pur-python module&lt;/li&gt;
+  &lt;li&gt;CarmaWrap and SheshaWrap are pur-wrapper module using pybind&lt;/li&gt;
+  &lt;li&gt;minor debug&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;for Internal developments:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;rename internal variables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Report bugs and issues on &lt;a href=&quot;https://github.com/ANR-COMPASS/shesha/issues&quot;&gt;this page&lt;/a&gt;&lt;/p&gt;</content><author><name>ANR-COMPASS</name></author><category term="2019," /><category term="v3" /><summary type="html">Naga anf Shesha are pur-python module CarmaWrap and SheshaWrap are pur-wrapper module using pybind minor debug for Internal developments: rename internal variables Report bugs and issues on this page</summary></entry></feed>
