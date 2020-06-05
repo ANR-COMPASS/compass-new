@@ -3,8 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>User manual - COMPASS</title>
 
-<meta name="description" content="End-to-end AO simulation tool using GPU acceleration
-">
+<meta name="description" content="This is the user manual for COMPASS. We will try to be as exhaustive as possible, but if you don’t get the answer you are looking for, contact us on the GitH...">
 <link rel="canonical" href="https://anr-compass.github.io/compass-new/manual.html"><link rel="alternate" type="application/rss+xml" title="COMPASS" href="/compass-new/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/compass-new/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/compass-new/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/compass-new/assets/favicon-16x16.png"><link rel="manifest" href="/compass-new/assets/site.webmanifest"><link rel="mask-icon" href="/compass-new/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/compass-new/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/compass-new/assets/browserconfig.xml">
@@ -288,7 +287,7 @@
 ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_parfile/parfile.py
 </code></pre></div></div>
 
-<p>Some basic parameter files are provided in the directory <code class="highlighter-rouge">$SHESHA_ROOT/data/par/par4bench</code> and an example is provided <a href="#2-parameter-file">here</a></p>
+<p>Some basic parameter files are provided in the directory <code class="language-plaintext highlighter-rouge">$SHESHA_ROOT/data/par/par4bench</code> and an example is provided <a href="#2-parameter-file">here</a></p>
 
 <p>After an initialization phase, the script will prompt in the terminal the short exposure Strehl ratio, the long exposure one, an estimation time remaining and the mean framerate of the simulation :</p>
 
@@ -310,16 +309,16 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
 
 <h3 id="2-parameter-file">2. Parameter file</h3>
 
-<p>For COMPASS, a parameter file is a python file where the parameter classes are instantiated and set to be imported by the simulation script. All the parameter classes are described in details <a href="#4-sheshaconfig-parameter-classes">here</a>.
+<p>For COMPASS, a parameter file is a python file where the parameter classes are instantiated and set to be imported by the simulation script. All the parameter classes are described in details <a href="#3-sheshaconfig-parameter-classes">here</a>.
 To write your own parameter file, remember those important points :</p>
 
 <ul>
-  <li>Starts by importing the <code class="highlighter-rouge">shesha.config</code> module: it contains all the parameter classes</li>
-  <li>Instantiates the paramater classes you need for your simulation. <strong>Note that some of those classes are required to perform a simulation : Param_loop, Param_geom, Param_tel and Param_atmos.</strong> You also have to set a list of Param_target called <code class="highlighter-rouge">p_targets</code>, a list of Param_wfs called <code class="highlighter-rouge">p_wfss</code>, a list of Param_dm called <code class="highlighter-rouge">p_dms</code>, a list of Param_centroider called <code class="highlighter-rouge">p_centroiders</code> and a list of Param_controller called <code class="highlighter-rouge">p_controllers</code>.</li>
-  <li>Set the classes parameters using the setter functions. Those functions are usually named as <code class="highlighter-rouge">set_&lt;parameter name&gt;</code>.</li>
+  <li>Starts by importing the <code class="language-plaintext highlighter-rouge">shesha.config</code> module: it contains all the parameter classes</li>
+  <li>Instantiates the paramater classes you need for your simulation. <strong>Note that some of those classes are required to perform a simulation : Param_loop, Param_geom, Param_tel and Param_atmos.</strong> You also have to set a list of Param_target called <code class="language-plaintext highlighter-rouge">p_targets</code>, a list of Param_wfs called <code class="language-plaintext highlighter-rouge">p_wfss</code>, a list of Param_dm called <code class="language-plaintext highlighter-rouge">p_dms</code>, a list of Param_centroider called <code class="language-plaintext highlighter-rouge">p_centroiders</code> and a list of Param_controller called <code class="language-plaintext highlighter-rouge">p_controllers</code>.</li>
+  <li>Set the classes parameters using the setter functions. Those functions are usually named as <code class="language-plaintext highlighter-rouge">set_&lt;parameter name&gt;</code>.</li>
 </ul>
 
-<p>An example of parameter file follows and others can be found in <code class="highlighter-rouge">$SHESHA_ROOT/data/par/par4bench</code> directory</p>
+<p>An example of parameter file follows and others can be found in <code class="language-plaintext highlighter-rouge">$SHESHA_ROOT/data/par/par4bench</code> directory</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">shesha.config</span> <span class="k">as</span> <span class="n">conf</span>
 
@@ -421,21 +420,25 @@ To write your own parameter file, remember those important points :</p>
 
 <p>Thanks to the architecture of COMPASS, writing a script is easy.</p>
 
-<p>Let’s take a look at our <code class="highlighter-rouge">closed_loop.py</code> script :</p>
+<p>Let’s take a look at our <code class="language-plaintext highlighter-rouge">closed_loop.py</code> script :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">shesha.supervisor.compassSupervisor</span> <span class="kn">import</span> <span class="n">CompassSupervisor</span> <span class="k">as</span> <span class="n">Supervisor</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">shesha.supervisor.compassSupervisor</span> <span class="kn">import</span> <span class="n">CompassSupervisor</span>
+<span class="kn">from</span> <span class="nn">shesha.util.utilities</span> <span class="kn">import</span> <span class="n">load_config_from_file</span>
 <span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
 <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
+
 <span class="n">param_file</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"&lt;parameters_filename&gt;"</span><span class="p">]</span>
-<span class="n">supervisor</span> <span class="o">=</span> <span class="n">Supervisor</span><span class="p">(</span><span class="n">param_file</span><span class="p">)</span>
-<span class="n">supervisor</span><span class="p">.</span><span class="n">initConfig</span><span class="p">()</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">load_config_from_file</span><span class="p">(</span><span class="n">param_file</span><span class="p">)</span>
+
+<span class="n">supervisor</span> <span class="o">=</span> <span class="n">CompassSupervisor</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
 <span class="n">supervisor</span><span class="p">.</span><span class="n">loop</span><span class="p">(</span><span class="n">supervisor</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">p_loop</span><span class="p">.</span><span class="n">niter</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Let’s go step-by-step :</p>
 
 <ul>
-  <li>The first line imports the <code class="highlighter-rouge">shesha.supervisor.compassSupervisor</code> module: it contains the Supervisor class used to handle the simulation. This class is described properly <a href="#2-sheshasupervisor--supervisor-class">here</a>.</li>
+  <li>The first two lines import the <code class="language-plaintext highlighter-rouge">shesha.supervisor.compassSupervisor</code> module, it contains the Supervisor class used to handle the simulation. This class is described properly <a href="#2-sheshasupervisor--supervisor-class">here</a>, and an utility function that will returns a configuration module from the given parameter file.</li>
   <li>The next lines :</li>
 </ul>
 
@@ -444,19 +447,18 @@ To write your own parameter file, remember those important points :</p>
 <span class="n">param_file</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"&lt;parameters_filename&gt;"</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>are used to get the parameter file name. <code class="highlighter-rouge">docopt</code> module is a command line arguments parser for python that can also set proper usage pattern and options for your script. For more information, visit <a href="http://docopt.org/">docopt.org</a></p>
+<p>are used to get the parameter file name. <code class="language-plaintext highlighter-rouge">docopt</code> module is a command line arguments parser for python that can also set proper usage pattern and options for your script. For more information, visit <a href="http://docopt.org/">docopt.org</a></p>
 
 <ul>
-  <li><code class="highlighter-rouge">supervisor = Supervisor(param_file)</code> instantiates the Supervisor class and loads the parameters defined in the parameter file</li>
-  <li><code class="highlighter-rouge">supervisor.initConfig()</code> initializes the simulation.</li>
-  <li><code class="highlighter-rouge">supervisor.loop(supervisor.config.p_loop.niter)</code> runs the simulation for <code class="highlighter-rouge">niter</code> iterations</li>
+  <li><code class="language-plaintext highlighter-rouge">supervisor = Supervisor(config)</code> instantiates the Supervisor class</li>
+  <li><code class="language-plaintext highlighter-rouge">supervisor.loop(supervisor.config.p_loop.niter)</code> runs the simulation for <code class="language-plaintext highlighter-rouge">niter</code> iterations</li>
 </ul>
 
 <h3 id="4-interactions-through-the-supervisor">4. Interactions through the Supervisor</h3>
 
-<p>If you had launched your script with python or ipython in interaction mode (<code class="highlighter-rouge">-i</code> option), you will have access to the prompt after the iterations loop. At this point, you can interact with your simulation to display images (PSF, command matrix…) or to access at any internal quantity for debug. You can also modify your simulation and launch new iterations.</p>
+<p>If you had launched your script with python or ipython in interaction mode (<code class="language-plaintext highlighter-rouge">-i</code> option), you will have access to the prompt after the iterations loop. At this point, you can interact with your simulation to display images (PSF, command matrix…) or to access at any internal quantity for debug. You can also modify your simulation and launch new iterations.</p>
 
-<p>The Supervisor class has been created to offer an easy way to interact with the simulation through some easy-to-understand functions.</p>
+<p>The Supervisor class has been created for modularity. It is composed of several components (atmos, wfs, rtc, dms, etc…) that offer interfaces (setter/getter) with the corresponding GPU objects.</p>
 
 <p>Some of the most useful functions are listed below:</p>
 
@@ -469,41 +471,43 @@ To write your own parameter file, remember those important points :</p>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><strong>supervisor.getTarImage(0, “le”)</strong></td>
-      <td style="text-align: left">Return the long exposure PSF. Use <code class="highlighter-rouge">"se"</code> to get the short exposure one</td>
+      <td style="text-align: left"><strong>supervisor.target.get_tar_image(0, expo_type=”le”)</strong></td>
+      <td style="text-align: left">Return the long exposure PSF. Use <code class="language-plaintext highlighter-rouge">"se"</code> to get the short exposure one</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>supervisor.getTarPhase(0)</strong></td>
+      <td style="text-align: left"><strong>supervisor.target.get_tar_phase(0)</strong></td>
       <td style="text-align: left">Return the residual phase</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>supervisor.getWfsImage(0)</strong></td>
+      <td style="text-align: left"><strong>supervisor.wfs.get_wfs_image(0)</strong></td>
       <td style="text-align: left">Return the WFS image</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>supervisor.getDmShape(0)</strong></td>
+      <td style="text-align: left"><strong>supervisor.dms.get_dm_shape(0)</strong></td>
       <td style="text-align: left">Return the DM shape</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>supervisor.getCentroids(0)</strong></td>
-      <td style="text-align: left">Return the lastest centroids (X measurements first, then Y)</td>
+      <td style="text-align: left"><strong>supervisor.rtc.get_slopes(0)</strong></td>
+      <td style="text-align: left">Return the lastest slopes (X measurements first, then Y)</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>supervisor.getCom(0)</strong></td>
+      <td style="text-align: left"><strong>supervisor.rtc.get_voltages(0)</strong></td>
       <td style="text-align: left">Return the lastest DM commands</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>supervisor.getImat(0)</strong></td>
+      <td style="text-align: left"><strong>supervisor.rtc.get_interaction_matrix(0)</strong></td>
       <td style="text-align: left">Return the interaction matrix</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>supervsor.getCmat(0)</strong></td>
+      <td style="text-align: left"><strong>supervsor.rtc.get_command_matrix(0)</strong></td>
       <td style="text-align: left">Return the command matrix</td>
     </tr>
   </tbody>
 </table>
 
-<p>You can find all the functions description and usage in the <a href="http://shesha.readthedocs.io/">shesha package documentation</a>, autogenerated from the source code documentation using Sphinx. You can also use the <code class="highlighter-rouge">help</code> command of python to get information about a function.</p>
+<p>The Supervisor class will be described with more details in a <a href="#2-sheshasupervisor--supervisor-class">following section</a>.</p>
+
+<p>You can find a full description of this class (and all the others) in the <a href="https://lesia.obspm.fr/compass">compass code documentation</a>, autogenerated from the source code documentation using Doxygen. You can also use the <code class="language-plaintext highlighter-rouge">help</code> command of python to get information about a function.</p>
 
 <h3 id="5-using-the-gui">5. Using the GUI</h3>
 
@@ -511,7 +515,7 @@ To write your own parameter file, remember those important points :</p>
 
 <p>To launch the GUI :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ipython -i $SHESHA_ROOT/widgets/widget_ao.py
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ipython -i $SHESHA_ROOT/widgets/widget_ao.py
 </code></pre></div></div>
 
 <p><img src="assets/images/compass_gui_annotated.png" alt="gui" width="600px" /></p>
@@ -535,7 +539,7 @@ To write your own parameter file, remember those important points :</p>
 
 <h4 id="interactions-in-the-terminal">Interactions in the terminal</h4>
 
-<p>The terminal is also available when you are using the GUI, as for a classical simulation. All the commands listed in the section <a href="#4-interactions">Interactions</a> (and all the other) remain valids, but you have to add <code class="highlighter-rouge">wao.</code> before each command. For example, <code class="highlighter-rouge">supervisor.getTarImage(0,"le")</code> becomes <code class="highlighter-rouge">wao.supervisor.getTarImage(0,"le")</code></p>
+<p>The terminal is also available when you are using the GUI, as for a classical simulation. All the commands listed in the section <a href="#4-interactions">Interactions</a> (and all the other) remain valids, but you have to add <code class="language-plaintext highlighter-rouge">wao.</code> before each command. For example, <code class="language-plaintext highlighter-rouge">supervisor.target.get_tar_image(0,expo_type="le")</code> becomes <code class="language-plaintext highlighter-rouge">wao.supervisor.target.get_tar_image(0,expo_type="le")</code></p>
 
 <h2 id="2-features-implementation">2. Features implementation</h2>
 
@@ -556,7 +560,7 @@ To write your own parameter file, remember those important points :</p>
 
 <p>A critical parameter in the simulation model is the quantum pixel size. It is the size (expressed in arcsec) of the smallest turbulence cell that can produce a significant optical path difference between two rays of the light beam. It defines how the turbulent phase is sampled in the simulation and put constraints on the size of the largest arrays in the simulation. In COMPASS, the quantum pixel size is computed differently for Shack Hartmann and Pyramid WFS. Concerning the SH WFS, the sampling of the phase in a subaperture is computed as the ratio between the seeing obtained from the Fried parameter at the wavefront sensing wavelength, and the diffraction limit obtained using the physical subaperture diameter (subapdiam). An arbitrary factor in then chosen to determine the final field of view simulated for a subaperture. To ensure that the final image in a subaperture contains most of the speckles of the spot image, we chose a constant value for this arbitrary k factor in our simulation (k=6) and the initial size of the square array containing the phase for a given subaperture is computed as :</p>
 
-<p><code class="highlighter-rouge">pdiam = long(k * subapdiam / r0)</code></p>
+<p><code class="language-plaintext highlighter-rouge">pdiam = long(k * subapdiam / r0)</code></p>
 
 <p>This number is then slightly tweaked in order to :</p>
 
@@ -567,38 +571,38 @@ To write your own parameter file, remember those important points :</p>
 
 <p>The quantum pixel size is then estimated as :</p>
 
-<p><code class="highlighter-rouge">qpixsize = pdiam * lambda / subapdiam * RASC / Nfft</code></p>
+<p><code class="language-plaintext highlighter-rouge">qpixsize = pdiam * lambda / subapdiam * RASC / Nfft</code></p>
 
 <p>where lambda is the observing wavelength of the WFS and RASC is the conversion factor between radians and arcsec. In this case, the size of the turbulent phase screen array to be simulated is</p>
 
-<p><code class="highlighter-rouge">nphase = pdiam*Nssp</code></p>
+<p><code class="language-plaintext highlighter-rouge">nphase = pdiam*Nssp</code></p>
 
 <p>with Nssp the number of subapertures in the telescope diameter.</p>
 
 <p>Concerning the pyramid WFS, the sampling of the phase is chosen as a trade-off between several parameters. Similarly to the case of a single subaperture of the SH WFS, we should ensure a good sampling of the turbulence and avoid speckle aliasing in the final image. Hence, P, the pupil diameter (in pixels), i.e. the size of turbulent phase screen array to be simulated, should be larger than several times the ratio between the seeing and the diffraction limit, but this time for the whole telescope aperture.</p>
 
-<p><code class="highlighter-rouge">P &gt; long(D / r0 * m)</code></p>
+<p><code class="language-plaintext highlighter-rouge">P &gt; long(D / r0 * m)</code></p>
 
 <p>with m an integer factor similar to the k factor in the case of the SH WFS and D the diameter of the telescope.</p>
 
 <p>Additionally, in the case of the pyramid, an ideal field stop radius is given by :</p>
 
-<p><code class="highlighter-rouge">Fs = lambda / D . Nssp / 2</code></p>
+<p><code class="language-plaintext highlighter-rouge">Fs = lambda / D . Nssp / 2</code></p>
 
 <p>with Nssp the number of pyramid measurement points along the diameter of the pupil. The radius of the simulated field of view, is given by :</p>
 
-<p><code class="highlighter-rouge">Rf = Fs . N . D / lambda / P</code></p>
+<p><code class="language-plaintext highlighter-rouge">Rf = Fs . N . D / lambda / P</code></p>
 
 <p>where N is the size of Fourier transform support of the high resolution image. N should is usually chosen to optimize the execution of the FFT algorithm (power of 2).
 Finally, we need to avoid as much as possible the overlap of diffractions effects from the 4 pupil images, which is linked to the pyramid angle, and leave enough room between the centers of these pupil images on the final high resolution image. Hence :</p>
 
-<p><code class="highlighter-rouge">Nfft &gt; P*(2 + 3S)</code></p>
+<p><code class="language-plaintext highlighter-rouge">Nfft &gt; P*(2 + 3S)</code></p>
 
 <p>with S close to 1. To ease computation we also chose Nssp as a divisor of P. In this case, the scaling factor between the high resolution pupil images in pyramid model and actual pupil size on the camera images would be P / Nssp.</p>
 
 <p>The quantum pixel size in arcsec is given by:</p>
 
-<p><code class="highlighter-rouge">qpixsize = pdiam * Lambda / D * RASC / Nfft</code></p>
+<p><code class="language-plaintext highlighter-rouge">qpixsize = pdiam * Lambda / D * RASC / Nfft</code></p>
 
 <h3 id="3-telescope">3. Telescope</h3>
 
@@ -622,7 +626,7 @@ Finally, we need to avoid as much as possible the overlap of diffractions effect
 
 <p>The sub-images are simulated at a high spatial resolution, binned to the WFS pixel size, then cropped to match the required field of view. Detector read-out noise and photon noise are simulated using random numbers generation, respectively following Normal and Poisson distributions. The standard deviations of those distributions depend respectively on the read-out noise and on the number of photons per subapertures, both defined by the user through dedicated parameters. The number of photons per subapertures is computed as:</p>
 
-<p><code class="highlighter-rouge">Nphotons = F0 * 10**(-0.4*m) * dt * T * S</code></p>
+<p><code class="language-plaintext highlighter-rouge">Nphotons = F0 * 10**(-0.4*m) * dt * T * S</code></p>
 
 <p>where:</p>
 
@@ -662,7 +666,7 @@ The phase term introduced by the pyramid itself is added to this EM field and an
 
 <p>Here a pseudo-code of the algorithm :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for each modulation point k:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for each modulation point k:
       create phase_modu(k)
       get phase and multiply by exp(i*phase_modu) and by pupil amplitude
       do FFT
@@ -678,13 +682,13 @@ Normalize
 Add noise
 </code></pre></div></div>
 
-<p>With COMPASS 3.0, it is now possible to run simulate N faces pyramid. Set in the parameter file <code class="highlighter-rouge">p_wfss[0].set_nPupils(3)</code> to use a 3-faces pyramid for example. Note that if N is not equal to 4, the only centroider available is <a href="#masked-pixels">“maskedpix”</a>.</p>
+<p>With COMPASS 3.0, it is now possible to run simulate N faces pyramid. Set in the parameter file <code class="language-plaintext highlighter-rouge">p_wfss[0].set_nPupils(3)</code> to use a 3-faces pyramid for example. Note that if N is not equal to 4, the only centroider available is <a href="#masked-pixels">“maskedpix”</a>.</p>
 
 <h4 id="geometric-wfs">“Geometric” WFS</h4>
 
-<p>COMPASS also features a so-called “geometric model” emulating an ideal Shack-Hartmann wavefront sensor. This algorithm directly computes the average phase gradient at each subaperture, based on the phase itself, with no noise. This estimation of the average slope of the wavefront is considered as an “ideal” measurement, with perfect linearity over an infinite range and that does not suffer from any kind of sampling effect by a detector. This geometric model is embedded in all the WFS in COMPASS. Use the command <code class="highlighter-rouge">sim.rtc.do_centroids_geom(0)</code> to compute it.</p>
+<p>COMPASS also features a so-called “geometric model” emulating an ideal Shack-Hartmann wavefront sensor. This algorithm directly computes the average phase gradient at each subaperture, based on the phase itself, with no noise. This estimation of the average slope of the wavefront is considered as an “ideal” measurement, with perfect linearity over an infinite range and that does not suffer from any kind of sampling effect by a detector. This geometric model is embedded in all the WFS in COMPASS. Use the command <code class="language-plaintext highlighter-rouge">supervisor.rtc.do_centroids_geom(0)</code> to compute it.</p>
 
-<p>Finally, a last level of abstraction is reached with the third type of wave surface analyzer, which is purely theoretical: it is a direct projection of the phase onto the DM influence functions, resulting in a set of DM voltages that best fit the wavefront in a least-square sense. It is fully linear and is free from any WFS effect or reconstruction effect, it is in particular free from aliasing. We call this method “DM projection”, it behaves as a theoretical, perfect WFS. To use it, set your controller type to “geo” : <code class="highlighter-rouge">p_controllers[0].type = "geo"</code></p>
+<p>Finally, a last level of abstraction is reached with the third type of wave surface analyzer, which is purely theoretical: it is a direct projection of the phase onto the DM influence functions, resulting in a set of DM voltages that best fit the wavefront in a least-square sense. It is fully linear and is free from any WFS effect or reconstruction effect, it is in particular free from aliasing. We call this method “DM projection”, it behaves as a theoretical, perfect WFS. To use it, set your controller type to “geo” : <code class="language-plaintext highlighter-rouge">p_controllers[0].type = "geo"</code></p>
 
 <h3 id="6-deformable-mirrors">6. Deformable mirrors</h3>
 
@@ -896,12 +900,12 @@ Then, the reconstructor allows to compute the command matrix and the DM commands
 
 <p>Indeed, with this controller, the command c is computed as:</p>
 
-<p><code class="highlighter-rouge">c[k] = decayFactor * E.dot(c[k-1]) + g*CMAT.dot(s[k])</code></p>
+<p><code class="language-plaintext highlighter-rouge">c[k] = decay_factor * E.dot(c[k-1]) + g*CMAT.dot(s[k])</code></p>
 
 <p>with:</p>
 
 <ul>
-  <li>decayFactor a float value</li>
+  <li>decay_factor a float value</li>
   <li>E a matrix that you have to provide</li>
   <li>g is the loop gain</li>
   <li>CMAT the command matrix you have to provide</li>
@@ -909,13 +913,13 @@ Then, the reconstructor allows to compute the command matrix and the DM commands
 </ul>
 
 <p>If the mode is set at “integrator”, matrix E is automatically set as identity.
-Use the command <code class="highlighter-rouge">sim.rtc.set_commandlaw(0,b"2matrices")</code> to switch to the “2matrices” mode.</p>
+Use the command <code class="language-plaintext highlighter-rouge">supervisor.rtc.set_2matrices_law(0)</code> to switch to the “2matrices” mode.</p>
 
 <h4 id="voltage-computation">Voltage computation</h4>
 
 <p>The loop delay d is then taken into account and also an eventual perturbation voltage p set by the user. Finally, the voltage vector v that will be apply at iteration k on the DM is computed as:</p>
 
-<p><code class="highlighter-rouge">v[k] = (a * c[k] + b * c[k-1] + e * c[k-2]) + p[k]</code></p>
+<p><code class="language-plaintext highlighter-rouge">v[k] = (a * c[k] + b * c[k-1] + e * c[k-2]) + p[k]</code></p>
 
 <p>with:</p>
 
@@ -937,7 +941,7 @@ The PSF intensity is normalized in such a way that its maximum value corresponds
 
 <h3 id="1-compass-architecture">1. COMPASS architecture</h3>
 
-<p><span class="inner"><img src="assets/images/compass_archi.png" alt="archi" height="280px" />&gt;</span></p>
+<p><span class="inner"><img src="assets/images/compass-archi.png" alt="archi" height="280px" />&gt;</span></p>
 
 <p>The initial objective behind the development of COMPASS was to get a numerical simulation platform able to deliver short exposure PSF (i.e. per WFS frame) with a time-to-solution in the range of the 10th of seconds for an AO system at the E-ELT scale. To reach such performance, the use of GPU as hardware accelerators appeared as the best option.</p>
 
@@ -953,163 +957,25 @@ The PSF intensity is normalized in such a way that its maximum value corresponds
 It allows a complete read-access of the instantiated GPU objects and arrays, very usefull for debug if you are a developer. On the other hand, it highly depends on the structures defined by those C++ classes : the konwledge of the core internal structures of COMPASS is then required to use those capabilities properly.
 However, unless you are a developer for COMPASS, it is generally useless to get access to all those informations. Hence, COMPASS embeds abstraction layers that allow generic user to interact easily with the simulation.</p>
 
-<h3 id="2-sheshasupervisor--compass-supervisor-class">2. shesha.supervisor : COMPASS Supervisor class</h3>
+<h3 id="2-sheshasupervisor--supervisor-classes">2. shesha.supervisor : Supervisor classes</h3>
 
-<p>This module defines the Supervisor classes which act as an user interface abstraction layer. The goal is to define generic functions that could be useful for simulations as well as for bench prototyping. Hence, a Supervisor inheriths from AbstractSupervisor which defines some functions that has to be implemented in a Supervisor class.</p>
+<p>This module defines so called Supervisor classes which act as a simulator engine. A supervisor is composed of <em>components</em> instances, which handle each AO subsystems (WFS, DM, RTC, etc…). A supervisor inherits from the <em>GenericSupervisor</em> class which declare as abstract methods the initialisation of each components. It allows easy-to-write user-specific supervisor which instantiates components coming from COMPASS, user or even third party library, and interface them together to make a simulation run. Those components classes will be described in the next section.</p>
 
-<p>The COMPASS Supervisor is the supervisor dedicated to COMPASS simulations. It is composed by two main attributes :</p>
+<p>The supervisor role is then to handle the AO loop execution by sending the right command to the right component sequentially, in order to perform a single simulation iteration : this sequence is defined by the <em>supervisor.next()</em> method. The <em>supervisor.loop()</em> method then call the <em>supervisor.next()</em> for a given number of iterations, and display some informations regularly, such as Strehl ratio, remaining time, etc… The <em>CompassSupervisor</em> that comes natvely with the <em>shesha</em> package performs an iteration as follow : 
+<span class="inner"><img src="assets/images/loop-process.png" alt="loop" width="480px" /></span></p>
 
+<p>On top of that, a supervisor can also instantiates some <em>optimizer</em> classes that can perform operation on the supervisor component in order to optimize the AO loop. The <em>shesha</em> package comes with two optimizers : <em>ModalBasis</em> for modal basis related computations, and <em>Calibration</em> for interaction matrix calibration for instance.</p>
+
+<p>You will find the complete documentation of :</p>
 <ul>
-  <li><strong>config</strong> : module containing all the parameters set by the parameters file</li>
-  <li><strong>_sim</strong> : Simulator instance which is driving the simulation. This attribute is hidden because it is only useful for developer or expert user. However, as the COMPASS simulation completely relies on this class, the next section will give you an overview of it.</li>
+  <li>the CompassSupervisor <a href="https://lesia.obspm.fr/compass/rc/classshesha_1_1supervisor_1_1compass_supervisor_1_1_compass_supervisor.html">here</a></li>
+  <li>the components <a href="https://lesia.obspm.fr/compass/rc/namespaceshesha_1_1supervisor_1_1components.html">here</a></li>
+  <li>the optimizers <a href="https://lesia.obspm.fr/compass/rc/namespaceshesha_1_1supervisor_1_1optimizers.html">here</a></li>
 </ul>
 
-<p>Then, the COMPASS Supervisor provides a set of useful functions to interact and drive the simulation. See <a href="http://shesha.readthedocs.io/en/master/shesha_supervisor.html">the shesha documentation</a> to get a description of those functions.</p>
+<p>To make the writing of new components easier, the further minor versions upgrade of COMPASS will aim to abstract all the components interfaces.</p>
 
-<h3 id="3-sheshasimsimulator-simulator-class">3. shesha.sim.simulator: Simulator class</h3>
-
-<p>This module defines the Simulator class. The attributes of this class are the various objects defined during the initialization phase :</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Attribute name</th>
-      <th style="text-align: left">Type</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><strong>atm</strong></td>
-      <td style="text-align: left">Atmos</td>
-      <td style="text-align: left">Atmosphere GPU object</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>tel</strong></td>
-      <td style="text-align: left">Telescope</td>
-      <td style="text-align: left">Telescope GPU object</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>tar</strong></td>
-      <td style="text-align: left">Target</td>
-      <td style="text-align: left">Target GPU object</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>rtc</strong></td>
-      <td style="text-align: left">Rtc</td>
-      <td style="text-align: left">RTC GPU object</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>wfs</strong></td>
-      <td style="text-align: left">Sensors</td>
-      <td style="text-align: left">Sensors GPU object</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>dms</strong></td>
-      <td style="text-align: left">Dms</td>
-      <td style="text-align: left">DMs GPU object</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>config</strong></td>
-      <td style="text-align: left">ModuleType</td>
-      <td style="text-align: left">Parameters imported from your paramfile</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>c</strong></td>
-      <td style="text-align: left">naga_context</td>
-      <td style="text-align: left">GPU context</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>is_init</strong></td>
-      <td style="text-align: left">bool</td>
-      <td style="text-align: left">Flag for completed initialization</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>loaded</strong></td>
-      <td style="text-align: left">bool</td>
-      <td style="text-align: left">Flag for loaded parameters</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>iter</strong></td>
-      <td style="text-align: left">int</td>
-      <td style="text-align: left">Number of iterations performed</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>use_DB</strong></td>
-      <td style="text-align: left">bool</td>
-      <td style="text-align: left">Flag for using the database system</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>matricesToLoad</strong></td>
-      <td style="text-align: left">dict</td>
-      <td style="text-align: left">Dictionary of teh database</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Then, those objects can be manipulated through this class. The AO loop process is also embedded in a class method, making user script light and easy to write.</p>
-
-<p>The Simulator class is instantiated through the Supervisor class, but it can also be instantiated independently :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">shesha.sim.simulator</span> <span class="kn">import</span> <span class="n">Simulator</span>
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>or with the path to a parameter file :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">shesha.sim.simulator</span> <span class="kn">import</span> <span class="n">Simulator</span>
-<span class="n">sim</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">(</span><span class="s">"/path_to_file/param_file.py"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>If the path is defined, the file is directly loaded during the instantiation. In the other case, the user has to manually load the file thanks to the function <code class="highlighter-rouge">load_from_file</code>:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sim</span><span class="p">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="s">"/path_to_file/param_file.py"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Then, the simulation is initialized through a call to the function <code class="highlighter-rouge">init_sim</code>:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sim</span><span class="p">.</span><span class="n">init_sim</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>The initialization process is described below.
-<img src="assets/images/init-process.png" alt="init" width="840px" />
-Each step of this initialization process depends on the parameters file. For example, if no DM parameters are defined in the parameter file, then no DM will be initialized and the simulation will run without any DM.</p>
-
-<p>After this initialization phase, you can run the AO loop with function <code class="highlighter-rouge">loop</code> that takes the number of iterations as argument:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sim</span><span class="p">.</span><span class="n">loop</span><span class="p">(</span><span class="n">sim</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">p_loop</span><span class="p">.</span><span class="n">niter</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><span class="inner"><img src="assets/images/loop-process.png" alt="loop" width="480px" /></span></p>
-
-<p>Note that <code class="highlighter-rouge">sim.config.p_loop.niter</code> is used to retieve the number of iterations specified in the parameter file : you can replace it by any integer.</p>
-
-<p>The AO loop process is also depicted. The Simulator class wraps operations of the AO loop into specific functions which are called at each iteration. Those functions are the one described in the adjacent picture.</p>
-
-<p>Note that, due to this process order, there is an inherent 1-frame delay. So if the delay parameter is set to 1 in the parameter file, the simulated delay will be a 2-frames delay.
-Note that the PSF is not computed at each iteration. By default, it will be computed each 100 iterations by the command <code class="highlighter-rouge">compTarImage(0)</code> in the <code class="highlighter-rouge">loop</code> function. If this behaviour doesn’t fulfill your requirements, please refer to the section <a href="#4-scripting-with-compass">Scripting with COMPASS</a>.</p>
-
-<p>Details on the Simulator class functions can be found in <a href="http://shesha.readthedocs.io/en/master/shesha_sim.html">the shesha documentation</a>.</p>
-
-<h4 id="database-management">Database management</h4>
-
-<p>The initialization step can be accelerated by re-using previous results from older simulations runs, as phase screens or interaction matrix. To use this feature, you have to instantiate the Supervisor with <code class="highlighter-rouge">use_DB=True</code>:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">shesha.supervisor.compassSupervisor</span> <span class="kn">import</span> <span class="n">CompassSupervisor</span> <span class="k">as</span> <span class="n">Supervisor</span>
-<span class="n">supervisor</span> <span class="o">=</span> <span class="n">Supervisor</span><span class="p">(</span><span class="n">param_file</span><span class="p">,</span> <span class="n">use_DB</span><span class="o">=</span><span class="n">use_DB</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>You can also directly use this feature with the script <code class="highlighter-rouge">closed_loop.py</code> with a special flag:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> <span class="nv">$SHESHA_ROOT</span>
-ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_parfile/parfile.py <span class="nt">--</span> <span class="nt">--DB</span>
-</code></pre></div></div>
-
-<p>At first use, it will create <code class="highlighter-rouge">$SHESHA_ROOT/data/dataBase/matricesDataBase.h5</code> file where we store all the arrays used to create phase screens, DMs and interaction matrix. The parameters of the simulation are also saved. Then, each time you run a simulation, COMPASS check in this file if some of those arrays can be re-used according to the parameters of your simulation. If it is possible, it will just load those arrays, leading to an acceleration of the initialization phase. In the other case, it will compute normally those arrays and store them in the database.</p>
-
-<p><strong>Note :</strong> <em>We have already encounter some stability problems of the database system. If it occurs, we suggest to remove the <code class="highlighter-rouge">$SHESHA_ROOT/data/dataBase/matricesDataBase.h5</code> file and all the <code class="highlighter-rouge">.h5</code> files created by the database. This can be done by using the shell script <code class="highlighter-rouge">$SHESHA_ROOT/cleanDB.sh</code>.</em></p>
-
-<h3 id="4-sheshaconfig-parameter-classes">4. shesha.config: parameter classes</h3>
+<h3 id="3-sheshaconfig-parameter-classes">3. shesha.config: parameter classes</h3>
 
 <p>We describe here all the parameters used in COMPASS and all the classes attributes that could be retrieved by the user during or after the simulation. The following tables give, for each class, the attribute name, a boolean that says if this attribute is settable in the parameters file, its default value and its unit. <span style="color:red"> Parameters displayed in red </span> need to be set by the user in the parameter file if its associated class is instantiated.</p>
 
@@ -2166,7 +2032,7 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
       <td style="text-align: left">Actuators position pattern: “square” or “hexa”</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>influType</strong></td>
+      <td style="text-align: left"><strong>influ_type</strong></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">none</td>
       <td style="text-align: left">yes</td>
@@ -2174,12 +2040,12 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
       <td style="text-align: left">Influence function to use: “default”, “radialSchwartz”, “squareSchwartz”, “blacknutt”, “gaussian”, “bessel” or “petal”</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>file_influ_hdf5</strong></td>
+      <td style="text-align: left"><strong>file_influ_fits</strong></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">none</td>
       <td style="text-align: left">yes</td>
       <td style="text-align: left">None</td>
-      <td style="text-align: left">FITS file name of custom influence functions. Overwrites influType, type_pattern, nact</td>
+      <td style="text-align: left">FITS file name of custom influence functions. Overwrites influ_type, type_pattern, nact</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>center_name</strong></td>
@@ -2732,17 +2598,16 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
 
 <h2 id="4-scripting-with-compass">4. Scripting with COMPASS</h2>
 
-<p>This section aims to provide some tips for writing your own script. We higly recommend to create your own class that inherits from the Simulator class for obvious convenience reasons. Once you have created your own class, just write a python script that will use it properly, eventually inside a custom Supervisor class for easier usage.</p>
-
+<p>This section aims to provide some tips for writing your own script. We higly recommend to create your own class that inherits from the CompassSupervisor or GenericSupervisor class for obvious convenience reasons. If you want to use components that are not using COMPASS modules, you will also have to write it. Once you have created your own class, just write a python script that will use it properly, eventually inside a custom Supervisor class for easier usage.</p>
 <h3 id="1-inheritance">1. Inheritance</h3>
 
 <p>If you don’t know anything about inheritance with python, you can find information in the <a href="https://docs.python.org/3/tutorial/classes.html#inheritance">Python documentation</a>.</p>
 
-<p>We recommend to not overwrite the <code class="highlighter-rouge">init_sim</code>, <code class="highlighter-rouge">load_from_file</code> and <code class="highlighter-rouge">force_context</code> functions in your class, unless you really know what you are doing. The interesting function the overwrite are <code class="highlighter-rouge">next</code> and eventually <code class="highlighter-rouge">loop</code>.</p>
+<p>Once you have written your own supervisor that instantiate eventually your own components and optimizers, the interesting functions to overwrite are <code class="language-plaintext highlighter-rouge">next</code> and eventually <code class="language-plaintext highlighter-rouge">loop</code>.</p>
 
-<p>The <code class="highlighter-rouge">next</code> function defines what happen during an iteration. You can basically rewrite this function if you want a specific behaviour for your loop.</p>
+<p>The <code class="language-plaintext highlighter-rouge">next</code> function defines what happen during an iteration. You can basically rewrite this function if you want a specific behaviour for your loop.</p>
 
-<p>The <code class="highlighter-rouge">loop</code> function basically put the <code class="highlighter-rouge">next</code> function in a loop and performs some operations like PSF computation regularly.</p>
+<p>The <code class="language-plaintext highlighter-rouge">loop</code> function basically put the <code class="language-plaintext highlighter-rouge">next</code> function in a loop and performs some operations like PSF computation regularly.</p>
 
 <p>By overwriting those two functions in your own class, you can reach any wanted behaviour for your simulation.</p>
 
@@ -2758,7 +2623,7 @@ ipython <span class="nt">-i</span> shesha/scripts/closed_loop.py path_to_your_pa
 
 <ul>
   <li><strong>Step 1</strong>: write your parameter file</li>
-  <li><strong>Step 2</strong>: write your own class that inherits from Simulator to perform whatever you want during the simulation process</li>
+  <li><strong>Step 2</strong>: write your own class that inherits from GenericSupervisor to perform whatever you want during the simulation process</li>
   <li><strong>Step3</strong>: write your script using docopt. Here, we want to get r0 as a command line argument. The script should be like:</li>
 </ul>
 
@@ -2775,19 +2640,20 @@ Options:
 """</span>
 
 <span class="kn">from</span> <span class="nn">docopt</span> <span class="kn">import</span> <span class="n">docopt</span>
-<span class="kn">from</span> <span class="nn">YourFile</span> <span class="kn">import</span> <span class="n">YourClass</span>
+<span class="kn">from</span> <span class="nn">shesha.util.utilities</span> <span class="kn">import</span> <span class="n">load_config_from_file</span>
+<span class="kn">from</span> <span class="nn">shesha.supervisor.yourFile</span> <span class="kn">import</span> <span class="n">YourSupervisor</span>
 
 <span class="n">arguments</span> <span class="o">=</span> <span class="n">docopt</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
 <span class="n">param_file</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"&lt;parameters_filename&gt;"</span><span class="p">]</span>
 <span class="n">save_file</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"&lt;save_filemane&gt;"</span><span class="p">]</span>
 
-<span class="n">sim</span> <span class="o">=</span> <span class="n">YourClass</span><span class="p">(</span><span class="n">param_file</span><span class="p">)</span> <span class="c1"># Instantiates your class and load parameters
-</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">load_config_from_file</span><span class="p">(</span><span class="n">param_file</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"--r0"</span><span class="p">]:</span> <span class="c1"># Check if r0 has been given as arguments
-</span>    <span class="n">sim</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">p_atmos</span><span class="p">.</span><span class="n">set_r0</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="s">"--r0"</span><span class="p">]))</span> <span class="c1"># Change the r0 before initalization
+</span>    <span class="n">config</span><span class="p">.</span><span class="n">p_atmos</span><span class="p">.</span><span class="n">set_r0</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">arguments</span><span class="p">[</span><span class="s">"--r0"</span><span class="p">]))</span> <span class="c1"># Change the r0 before initalization
 </span>
-<span class="n">sim</span><span class="p">.</span><span class="n">init_sim</span><span class="p">()</span>
-<span class="n">sim</span><span class="p">.</span><span class="n">loop</span><span class="p">()</span>
+<span class="n">sup</span> <span class="o">=</span> <span class="n">YourSupervisor</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="c1"># Instantiates your class and load parameters
+</span>
+<span class="n">sup</span><span class="p">.</span><span class="n">loop</span><span class="p">()</span>
 
 <span class="n">a_save_function</span><span class="p">(</span><span class="n">save_file</span><span class="p">)</span>
 </code></pre></div></div>
@@ -2818,11 +2684,11 @@ Options:
 
 <p>If you don’t know anything about inheritance with python, you can find information in the <a href="https://docs.python.org/3/tutorial/classes.html#inheritance">Python documentation</a>.</p>
 
-<p>We recommend to not overwrite the <code class="highlighter-rouge">init_sim</code>, <code class="highlighter-rouge">load_from_file</code> and <code class="highlighter-rouge">force_context</code> functions in your class, unless you really know what you are doing. The interesting function the overwrite are <code class="highlighter-rouge">next</code> and eventually <code class="highlighter-rouge">loop</code>.</p>
+<p>We recommend to not overwrite the <code class="language-plaintext highlighter-rouge">init_sim</code>, <code class="language-plaintext highlighter-rouge">load_from_file</code> and <code class="language-plaintext highlighter-rouge">force_context</code> functions in your class, unless you really know what you are doing. The interesting function the overwrite are <code class="language-plaintext highlighter-rouge">next</code> and eventually <code class="language-plaintext highlighter-rouge">loop</code>.</p>
 
-<p>The <code class="highlighter-rouge">next</code> function defines what happen during an iteration. You can basically rewrite this function if you want a specific behaviour for your loop.</p>
+<p>The <code class="language-plaintext highlighter-rouge">next</code> function defines what happen during an iteration. You can basically rewrite this function if you want a specific behaviour for your loop.</p>
 
-<p>The <code class="highlighter-rouge">loop</code> function basically put the <code class="highlighter-rouge">next</code> function in a loop and performs some operations like PSF computation regularly.</p>
+<p>The <code class="language-plaintext highlighter-rouge">loop</code> function basically put the <code class="language-plaintext highlighter-rouge">next</code> function in a loop and performs some operations like PSF computation regularly.</p>
 
 <p>By overwriting those two functions in your own class, you can reach any wanted behaviour for your simulation.</p>
 

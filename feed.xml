@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://anr-compass.github.io/compass-new/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anr-compass.github.io/compass-new/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-05-13T10:47:12+00:00</updated><id>https://anr-compass.github.io/compass-new/feed.xml</id><title type="html">COMPASS</title><subtitle>End-to-end AO simulation tool using GPU acceleration
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.0">Jekyll</generator><link href="https://anr-compass.github.io/compass-new/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anr-compass.github.io/compass-new/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-06-05T14:00:36+00:00</updated><id>https://anr-compass.github.io/compass-new/feed.xml</id><title type="html">COMPASS</title><subtitle>End-to-end AO simulation tool using GPU acceleration
 </subtitle><author><name>ANR-COMPASS</name></author><entry><title type="html">Release of v4.4.1</title><link href="https://anr-compass.github.io/compass-new/2020/03/31/Release-of-v4.4.1.html" rel="alternate" type="text/html" title="Release of v4.4.1" /><published>2020-03-31T00:00:00+00:00</published><updated>2020-03-31T00:00:00+00:00</updated><id>https://anr-compass.github.io/compass-new/2020/03/31/Release-of-v4.4.1</id><content type="html" xml:base="https://anr-compass.github.io/compass-new/2020/03/31/Release-of-v4.4.1.html">&lt;ul&gt;
   &lt;li&gt;handle different shape for rawimages and cal images (using the LUTfeature)&lt;/li&gt;
   &lt;li&gt;possibility to attach a stream tocentroiders&lt;/li&gt;
   &lt;li&gt;opimization of pyramid HR wfs&lt;/li&gt;
-  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;do_centroids_ref&lt;/code&gt; method&lt;/li&gt;
-  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;init_custom_dm&lt;/code&gt; method&lt;/li&gt;
-  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements*.txt&lt;/code&gt; file toinstall python dependencies&lt;/li&gt;
-  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;Jenkinsfile&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do_centroids_ref&lt;/code&gt; method&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init_custom_dm&lt;/code&gt; method&lt;/li&gt;
+  &lt;li&gt;add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requirements*.txt&lt;/code&gt; file toinstall python dependencies&lt;/li&gt;
+  &lt;li&gt;add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Jenkinsfile&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;update Doxyfile script anddocumentation rst&lt;/li&gt;
   &lt;li&gt;generate gcov trace in debug&lt;/li&gt;
 &lt;/ul&gt;
@@ -15,8 +15,8 @@
   &lt;li&gt;Debug issue with Kepler architecture&lt;/li&gt;
   &lt;li&gt;Multi GPU controller reworked&lt;/li&gt;
   &lt;li&gt;Update pages-doc&lt;/li&gt;
-  &lt;li&gt;Add useful keyworks in&lt;code class=&quot;highlighter-rouge&quot;&gt;rtc_cacao&lt;/code&gt; loopframe&lt;/li&gt;
-  &lt;li&gt;Add &lt;code class=&quot;highlighter-rouge&quot;&gt;reset_coms&lt;/code&gt; function in&lt;code class=&quot;highlighter-rouge&quot;&gt;sutra_controller&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add useful keyworks in&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rtc_cacao&lt;/code&gt; loopframe&lt;/li&gt;
+  &lt;li&gt;Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reset_coms&lt;/code&gt; function in&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sutra_controller&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;Update Jenkinsfile&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -59,7 +59,7 @@
   &lt;li&gt;add frame calibration&lt;/li&gt;
   &lt;li&gt;remove KALMAN support&lt;/li&gt;
   &lt;li&gt;add pyramid modulation weight&lt;/li&gt;
-  &lt;li&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;filter_TT&lt;/code&gt; parameter in centroider&lt;/li&gt;
+  &lt;li&gt;add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter_TT&lt;/code&gt; parameter in centroider&lt;/li&gt;
   &lt;li&gt;add modal integrator control law&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -77,8 +77,8 @@
   &lt;li&gt;add unit tests of rtc module&lt;/li&gt;
   &lt;li&gt;add DM petal&lt;/li&gt;
   &lt;li&gt;add fake camera input&lt;/li&gt;
-  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;load_config_from_file&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;debug &lt;code class=&quot;highlighter-rouge&quot;&gt;wfs_init&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;load_config_from_file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;debug &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wfs_init&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;for Internal developments:&lt;/p&gt;
