@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Release of v3.1 - COMPASS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Release of v5.0.0 - COMPASS</title>
 
-<meta name="description" content="Minor debugReport bugs and issues on this page">
-<link rel="canonical" href="https://anr-compass.github.io/compass-new/2018/10/15/Release-of-v3.1.html"><link rel="alternate" type="application/rss+xml" title="COMPASS" href="/compass-new/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/compass-new/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/compass-new/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/compass-new/assets/favicon-16x16.png"><link rel="manifest" href="/compass-new/assets/site.webmanifest"><link rel="mask-icon" href="/compass-new/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/compass-new/assets/favicon.ico">
+<meta name="description" content="PEP 8 application in shesha.supervisor  PEP 8 style in carma / sutra  Add CUDA 11 support  Make MAGMA an optional dependency  New supervisor architecture usi...">
+<link rel="canonical" href="https://anr-compass.github.io/compass-new/2020/07/03/Release-of-v5.0.0.html"><link rel="alternate" type="application/rss+xml" title="COMPASS" href="/compass-new/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/compass-new/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/compass-new/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/compass-new/assets/favicon-16x16.png"><link rel="manifest" href="/compass-new/assets/site.webmanifest"><link rel="mask-icon" href="/compass-new/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/compass-new/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/compass-new/assets/browserconfig.xml">
 
@@ -277,27 +277,64 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Release of v3.1</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Release of v5.0.0</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/ANR-COMPASS/compass-new/tree/master/_posts/2018-10-15-Release-of-v3.1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Release of v3.1"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/ANR-COMPASS/compass-new/tree/master/_posts/2020-07-03-Release-of-v5.0.0.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Release of v5.0.0"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/compass-new/archive.html?tag=2018%2C">2018,</a>
+                href="/compass-new/archive.html?tag=2020%2C">2020,</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/compass-new/archive.html?tag=v3">v3</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Oct 15, 2018</span>
-            </li></ul></div><meta itemprop="author" content="ANR-COMPASS"/><meta itemprop="datePublished" content="2018-10-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="2018,,v3"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/compass-new/archive.html?tag=v5">v5</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 03, 2020</span>
+            </li></ul></div><meta itemprop="author" content="ANR-COMPASS"/><meta itemprop="datePublished" content="2020-07-03T00:00:00+00:00">
+    <meta itemprop="keywords" content="2020,,v5"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
 <div class="article__content" itemprop="articleBody"><ul>
-  <li>Minor debug</li>
+  <li>PEP 8 application in shesha.supervisor</li>
+  <li>PEP 8 style in carma / sutra</li>
+  <li>Add CUDA 11 support</li>
+  <li>Make MAGMA an optional dependency</li>
+  <li>New supervisor architecture using components and optimizers</li>
+  <li>Remove get_centroids –&gt; becomes get_slopes</li>
+  <li>Old behavior of get_slopes was to call compute_slopes, which compute and return. Directly use compute_slopes instead</li>
+  <li>Remove get_all_data_loop functions from abstractSupervisor and AoSupervisor : unused</li>
+  <li>Remove computeImatModal from AoSupervisor : not used and not implemented</li>
+  <li>set_gain was able to set mgain also depending on the parameter given. Change the function to be more explicit : set_gain only set scalar loop gain while - set_modal_gain set the modal gain vector</li>
+  <li>Rename set_mgain to set_modal_gain</li>
+  <li>Rename get_mgain to get_modal_gain</li>
+  <li>Remove write_config_on_file from AoSupervisor, and rename it getConfigFab in canapassSupervisor</li>
+  <li>Rename set_global_r0 to set_r0</li>
+  <li>Rename getIFsparse to get_influ_basis (to make difference with get_influ)</li>
+  <li>Rename getIFtt to get_tt_influ_basis</li>
+  <li>Rename getIFdm to compute_influ_basis</li>
+  <li>Remove getTarAmpliPup (unused)</li>
+  <li>Remove reset function, use reset_simu instead</li>
+  <li>Remove setModalBasis : unused</li>
+  <li>Remove computePh2ModesFits : unused</li>
+  <li>Rename setPyrSourceArray in set_pyr_modulation_points</li>
+  <li>set_pyr_modulation becomes set_pyr_modulation_ampli</li>
+  <li>Signature changes in setPyr*Source : wfs_index first is mandatory</li>
+  <li>Add new parameter in PWFS : p_wfs._pyr_scale_pos to store the scale applied to pyr_cx and pyr_cy before upload. Useful for Milan functions</li>
+  <li>Rename recordCB in record_ao_circular_buffer</li>
+  <li>Signature changes for set_fourier_mask, set_noise, set_gs_mask : wfs_index as first argument and mandatory</li>
+  <li>Remove compute_wfs_images : not used</li>
+  <li>Rename set_dm_shape_from into set_command</li>
+  <li>Add new parameter in PDMS : p_dms[0]._dim_screen to store the dimension of the DM shape screen</li>
+  <li>Add components module : this module defines classes to handle implementation of AO components such as Wfs, Dm, Rtc and so on. For now, only compass - implementations are coded, but an abstraction for each component will be developed to allow third party library implementation</li>
+  <li>Add optimizers module : this module defines classes to operate on the supervisor components for AO optimization. It could include many algorithms, - define in some “thematic” class. For now, it includes ModalBasis class (for modal basis computations) and Calibration class (for interaction and command - matrices). User defined algorithms that do not fit into one of those classes should be written in an other new class with an explicit name to be used by - the supervisor.</li>
+  <li>Remove abstractSupervisor</li>
+  <li>Remove aoSupervisor</li>
+  <li>Remove the simulator module : methods have been moved into the right component</li>
+  <li>Add CONTRIBUTING.md file to define code guidelines</li>
+  <li>Add unit tests for each method accessible from a compassSupervisor using pytest. Each contribution should define a new unit test</li>
+  <li>Add templates for issue and merge request</li>
 </ul>
 
 <p>Report bugs and issues on <a href="https://github.com/ANR-COMPASS/shesha/issues">this page</a></p>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2018-10-15T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-07-03T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 <div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/compass-new/feed.xml">Subscribe</a></div>
@@ -308,7 +345,7 @@
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/compass-new/2018/10/08/Release-of-v3.0.html">Release of v3.0</a></div><div class="next"><span>NEXT</span><a href="/compass-new/2018/11/05/Release-of-v3.2.html">Release of v3.2</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/compass-new/2020/03/31/Release-of-v4.4.1.html">Release of v4.4.1</a></div></div></div>
 
 </div>
 
